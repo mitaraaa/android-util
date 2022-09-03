@@ -13,7 +13,12 @@ from pyrogram import Client
 
 
 bot_token = "5447852667:AAFL9hHSz5fgTqxZFmsPziA48Y_JtRcHYXo"
-bot = Client(name="xdxdroid", api_id=19772261, api_hash="19772261", bot_token=bot_token)
+bot = Client(
+    name="xdxdroid",
+    api_id=19772261,
+    api_hash="64e0d15f6cd7a63d69a2b14ac25a14c6",
+    bot_token=bot_token,
+)
 
 
 def get_data() -> tuple:
