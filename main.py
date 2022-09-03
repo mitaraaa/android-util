@@ -1,3 +1,4 @@
+import re
 import os
 import sys
 
@@ -10,7 +11,9 @@ finally:
 
 
 def main():
-    print(psutil.sensors_temperatures()["battery"][0])
+    print(
+        re.match("\w+=([^,)]+)", psutil.sensors_temperatures()["battery"][0]).group(1)
+    )
 
 
 main()
