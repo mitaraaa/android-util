@@ -13,7 +13,7 @@ finally:
 def main():
     print(
         re.match(
-            "\w+=([^,)]+)", str(psutil.sensors_temperatures()["battery"][0])
+            r"\w+=([^,)]+)", str(psutil.sensors_temperatures()["battery"][0])
         ).group(1)
     )
 
