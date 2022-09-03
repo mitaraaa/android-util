@@ -10,7 +10,7 @@ finally:
 
 
 def main():
-    print(psutil.sensors_temperatures())
+    print(psutil.sensors_temperatures()["battery"][0])
 
 
 main()
