@@ -17,12 +17,12 @@ bot = Client(name="xdxdroid", api_id=19772261, api_hash=19772261, bot_token=bot_
 
 
 def get_data() -> tuple:
-    temperature = re.findall(
-        r"\w+=([^,)]+)", str(psutil.sensors_temperatures()["battery"][0])
-    )[1]
+    temperature = str(
+        re.findall(r"\w+=([^,)]+)", str(psutil.sensors_temperatures()["battery"][0]))[1]
+    )
     battery = psutil.sensors_battery()
-    plugged = battery.power_plugged
-    percent = battery.percent
+    plugged = str(battery.power_plugged)
+    percent = str(battery.percent)
 
     return temperature, percent, plugged
 
