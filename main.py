@@ -39,8 +39,7 @@ async def handler(client, message):
     Poco X3 PRO
     Battery: {data[1]}% {"| Charging" if data[2] else ""}
     Temperature: {data[0]}"""
-    async with bot:
-        await bot.send_message(842767405, text)
+    await message.reply(text)
 
 
 bot.run()
