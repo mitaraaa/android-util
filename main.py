@@ -9,16 +9,33 @@ try:
 finally:
     sys.stderr = sys.__stderr__
 
+from pyrogram import Client
 
-def main():
-    print(
-        re.findall(r"\w+=([^,)]+)", str(psutil.sensors_temperatures()["battery"][0]))[1]
-    )
+
+bot_token = "5447852667:AAFL9hHSz5fgTqxZFmsPziA48Y_JtRcHYXo"
+bot = Client(name="xdxdroid", api_id=19772261, api_hash=19772261, bot_token=bot_token)
+
+
+def get_data() -> tuple:
+    temperature = re.findall(
+        r"\w+=([^,)]+)", str(psutil.sensors_temperatures()["battery"][0])
+    )[1]
     battery = psutil.sensors_battery()
     plugged = battery.power_plugged
-    percent = str(battery.percent)
-    plugged = "Plugged In" if plugged else "Not Plugged In"
-    print(percent + "% | " + plugged)
+    percent = battery.percent
+
+    return temperature, percent, plugged
 
 
-main()
+@bot.on_message()
+async def handler(client, message):
+    data = get_data()
+    text = f"""
+    Poco X3 PRO
+    Battery: {data[1]}% {"| Charging" if data[2] else ""}
+    Temperature: {data[0]}"""
+    async with bot:
+        await bot.send_message(842767405, text)
+
+
+bot.run()
