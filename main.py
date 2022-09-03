@@ -26,7 +26,7 @@ def get_data() -> tuple:
         re.findall(r"\w+=([^,)]+)", str(psutil.sensors_temperatures()["battery"][0]))[1]
     )
     battery = psutil.sensors_battery()
-    plugged = str(battery.power_plugged)
+    plugged = battery.power_plugged
     percent = str(battery.percent)
 
     return temperature, percent, plugged
